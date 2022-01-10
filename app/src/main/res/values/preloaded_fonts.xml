@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/arimo</item>
+        <item>@font/assistant</item>
+        <item>@font/convergence</item>
+        <item>@font/cousine</item>
+        <item>@font/montserrat</item>
+        <item>@font/nobile</item>
+        <item>@font/roboto</item>
+    </array>
+</resources>

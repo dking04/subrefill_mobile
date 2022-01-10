@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "387795625956",
+    "project_id": "subrefill",
+    "storage_bucket": "subrefill.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:387795625956:android:07347a07d6634f9273c9f1",
+        "android_client_info": {
+          "package_name": "com.kingsbyte.subrefill"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "387795625956-vpu91bbomonuggb52gogdegn5r1eq338.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjOyfX1vnq3pfEkUt1FZy7fiydCy7VTt8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "387795625956-vpu91bbomonuggb52gogdegn5r1eq338.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

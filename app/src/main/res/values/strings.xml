@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Subrefill</string>
+    <string name="forgot_password"><u>Forgot Password</u></string>
+    <string name="welcome">Welcome to SubRefill</string>
+    <string name="reach_us_on_facebook"><u>@Subrefill</u></string>
+    <string name="call_us"><u>08127586926</u></string>
+    <string name="send_us_an_email"><u>hello@subrefill.com</u></string>
+    <string name="twitter"><u>@DigitalDreamsNG</u></string>
+    <string name="public_key">FLWPUBK-a1dabaaf2ab3b5d9a0a9dead5927e8e9-X</string>
+    <string name="encryption_key">d530b29452058b49acd830e4</string>
+</resources>
