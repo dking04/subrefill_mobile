@@ -11,4 +11,5 @@
     <color name="light_gray">#FAF9F6</color>
     <color name="gainsboro">#DCDCDC</color>
     <color name="light_voilet">#108B009F</color>
+    <color name="blue">#0000ff</color>
 </resources>

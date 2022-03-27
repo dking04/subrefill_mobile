@@ -474,8 +474,8 @@ public class Electricity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 loader.dismiss();
-                Log.i("response","response "+response);
                 try {
+                    bottomSheetDialog.dismiss();
                     JSONObject jsonObject = new JSONObject(response);
                     String status = jsonObject.getString("status");
                     if (status.equals("1")){
@@ -491,7 +491,6 @@ public class Electricity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }else if(status.equals("0")){
-                        bottomSheetDialog.dismiss();
                         JSONObject errorObj = jsonObject.optJSONObject("error");
                         String info = jsonObject.optString("info");
                         if(errorObj!=null) {
@@ -580,7 +579,7 @@ public class Electricity extends AppCompatActivity {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000,0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(100000,0,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
     }
 

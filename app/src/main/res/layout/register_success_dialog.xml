@@ -15,15 +15,43 @@
         android:textSize="15sp"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
+        android:fontFamily="@font/montserrat"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Didn't see the mail? Check your Spam folder"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:textColor="#FF0000"
         android:fontFamily="@font/roboto"
         />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
     <Button
         android:id="@+id/ok"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:layout_marginTop="20dp"
+        android:text="Ok"
+        android:textAllCaps="false"
         android:backgroundTint="@color/voilet"
         android:fontFamily="@font/montserrat"
         android:textSize="15sp"/>
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resend Mail"
+            android:textAllCaps="false"
+            android:layout_marginLeft="50dp"
+            android:backgroundTint="@color/voilet"
+            android:fontFamily="@font/montserrat"
+            android:textSize="15sp"/>
+    </LinearLayout>
 </LinearLayout>

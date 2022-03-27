@@ -8,4 +8,6 @@
     <string name="twitter"><u>@DigitalDreamsNG</u></string>
     <string name="public_key">FLWPUBK-a1dabaaf2ab3b5d9a0a9dead5927e8e9-X</string>
     <string name="encryption_key">d530b29452058b49acd830e4</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

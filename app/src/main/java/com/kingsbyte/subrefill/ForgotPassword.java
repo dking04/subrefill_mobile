@@ -130,7 +130,7 @@ public class ForgotPassword extends AppCompatActivity {
                         }
                     }else if(status.equals("1")){
                         String message = "A Link to reset your password has been sent to "+email;
-                        RegisterSuccessDialog dialog = new RegisterSuccessDialog(ForgotPassword.this,message);
+                        RegisterSuccessDialog dialog = new RegisterSuccessDialog(ForgotPassword.this,message,email,"2");
                         dialog.setCancelable(false);
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.show();

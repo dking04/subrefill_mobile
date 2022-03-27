@@ -10,22 +10,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Subrefill"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.kingsbyte.subrefill.Settings"></activity>
-        <activity android:name="com.kingsbyte.subrefill.TvSuccess" />
-        <activity android:name="com.kingsbyte.subrefill.Transactions" />
-        <activity android:name="com.kingsbyte.subrefill.ElectricitySuccess" />
-        <activity android:name="com.kingsbyte.subrefill.DataSuccess" />
-        <activity android:name="com.kingsbyte.subrefill.AirtimeSuccess" />
-        <activity android:name="com.kingsbyte.subrefill.AddFund" />
-        <activity android:name="com.kingsbyte.subrefill.Tv" />
-        <activity android:name="com.kingsbyte.subrefill.Electricity" />
-        <activity android:name="com.kingsbyte.subrefill.Data" />
-        <activity android:name="com.kingsbyte.subrefill.Airtime" />
-        <activity android:name="com.kingsbyte.subrefill.Dashboard" />
-        <activity android:name="com.kingsbyte.subrefill.ForgotPassword" />
-        <activity android:name="com.kingsbyte.subrefill.Register" />
-        <activity android:name="com.kingsbyte.subrefill.Login" />
-        <activity android:name="com.kingsbyte.subrefill.Splashscreen">
+        <activity android:name=".Utility"></activity>
+        <activity android:name=".Profile" />
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".Settings" />
+        <activity android:name=".TvSuccess" />
+        <activity android:name=".Transactions" />
+        <activity android:name=".ElectricitySuccess" />
+        <activity android:name=".DataSuccess" />
+        <activity android:name=".AirtimeSuccess" />
+        <activity android:name=".AddFund" />
+        <activity android:name=".Tv" />
+        <activity android:name=".Electricity" />
+        <activity android:name=".Data" />
+        <activity android:name=".Airtime" />
+        <activity android:name=".Dashboard" />
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".Register" />
+        <activity android:name=".Login" />
+        <activity android:name=".Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +39,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <service android:name=".FirebaseMessageService"
+
+        <service
+            android:name=".FirebaseMessageService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -45,6 +50,5 @@
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
-
 
 </manifest>

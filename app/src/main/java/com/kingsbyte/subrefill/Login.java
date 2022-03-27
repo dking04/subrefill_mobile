@@ -37,6 +37,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -91,7 +92,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(validateInput()) {
-                    login();
+                    //login();
+                    createAccount();
                 }
             }
         });
@@ -163,6 +165,7 @@ public class Login extends AppCompatActivity {
                         String active = userObject.getString("active");
                         String verifyToken = userObject.getString("verify_token");
                         String userID = userObject.getString("id");
+
                         String token = object.getString("token");
                         JSONObject accountObj = object.getJSONObject("account");
                         String balance = accountObj.getString("balance");
@@ -221,5 +224,76 @@ public class Login extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000,2,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+    }
+
+    private void createAccount(){
+        SharedPreferences sharedPreferences = getSharedPreferences("user_details", Context.MODE_PRIVATE);
+        String token = sharedPreferences.getString("token","");
+        Loader loader = new Loader(this);
+        loader.setCancelable(false);
+        loader.setCanceledOnTouchOutside(false);
+        loader.show();
+
+        String url = "https://api.paystack.co/dedicated_account";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                loader.dismiss();
+                Log.i("response","response "+response);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+                loader.dismiss();
+
+                String message = null;
+                if (volleyError instanceof NetworkError) {
+                    message = "Cannot connect to Internet...Please check your connection!";
+                } else if (volleyError instanceof ServerError) {
+                    message = "The server could not be found. Please try again after some time!!";
+                } else if (volleyError instanceof AuthFailureError) {
+                    message = "Cannot connect to Internet...Please check your connection!";
+                } else if (volleyError instanceof ParseError) {
+                    message = "Parsing error! Please try again after some time!!";
+                } else if (volleyError instanceof NoConnectionError) {
+                    message = "Cannot connect to Internet...Please check your connection!";
+                } else if (volleyError instanceof TimeoutError) {
+                    message = "Connection TimeOut! Please check your internet connection.";
+                }
+                Toast.makeText(Login.this,message,Toast.LENGTH_SHORT).show();
+            }
+        }){
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Content-Type", "application/json");
+                headers.put("Authorization","Bearer sk_live_92cafa4ae2d1589d279905c54d3f42e561116437");
+                return headers;
+            }
+
+            @Override
+            public byte[] getBody() throws AuthFailureError {
+                try {
+                    JSONObject jsonBody = new JSONObject();
+                    jsonBody.put("customer","2");
+                    jsonBody.put("preferred_bank","wema-bank");
+                    String requestBody = jsonBody.toString();
+                    return requestBody.getBytes("utf-8");
+                }catch (UnsupportedEncodingException | JSONException e){
+                    return null;
+                }
+            }
+
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }

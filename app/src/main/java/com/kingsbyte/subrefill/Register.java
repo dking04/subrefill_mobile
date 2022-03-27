@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.ParseError;
@@ -145,6 +147,7 @@ public class Register extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.i("response","r "+response);
                 loader.dismiss();
                 try {
                     JSONObject object = new JSONObject(response);
@@ -162,7 +165,7 @@ public class Register extends AppCompatActivity {
                         Toast.makeText(Register.this,msg,Toast.LENGTH_SHORT).show();
                     }else if(status.equals("1")){
                         String message = "A verification email has been sent to "+email;
-                        RegisterSuccessDialog dialog = new RegisterSuccessDialog(Register.this,message);
+                        RegisterSuccessDialog dialog = new RegisterSuccessDialog(Register.this,message,email,"1");
                         dialog.setCancelable(false);
                         dialog.setCanceledOnTouchOutside(false);
                         dialog.show();
@@ -210,6 +213,7 @@ public class Register extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(50000,1,DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
     }
 }
